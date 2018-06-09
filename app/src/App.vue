@@ -46,139 +46,19 @@ export default {
     return {
       entries: {
         monday: [
-          {
-            'name': 'monAlex',
-            'location': 'home',
-            'notes': 'Foo baa'
-          },
-          {
-            'name': 'monJoe',
-            'location': 'office',
-            'notes': 'Foo baa'
-          },
-          {
-            'name': 'monAnna',
-            'location': 'home',
-            'notes': 'Foo baa'
-          },
-          {
-            'name': 'monJamie',
-            'location': 'office',
-            'notes': 'Foo baa'
-          },
-          {
-            'name': 'monSarah',
-            'location': 'mixed',
-            'notes': 'Foo baa'
-          }
+
         ],
         tuesday: [
-          {
-            'name': 'tueAlex',
-            'location': 'home',
-            'notes': 'Foo baa'
-          },
-          {
-            'name': 'tueJoe',
-            'location': 'office',
-            'notes': 'Foo baa'
-          },
-          {
-            'name': 'tueAnna',
-            'location': 'home',
-            'notes': 'Foo baa'
-          },
-          {
-            'name': 'tueJamie',
-            'location': 'office',
-            'notes': 'Foo baa'
-          },
-          {
-            'name': 'tueSarah',
-            'location': 'mixed',
-            'notes': 'Foo baa'
-          }
+
         ],
         wednesday: [
-          {
-            'name': 'wedAlex',
-            'location': 'home',
-            'notes': 'Foo baa'
-          },
-          {
-            'name': 'wedJoe',
-            'location': 'office',
-            'notes': 'Foo baa'
-          },
-          {
-            'name': 'wedAnna',
-            'location': 'home',
-            'notes': 'Foo baa'
-          },
-          {
-            'name': 'wedJamie',
-            'location': 'office',
-            'notes': 'Foo baa'
-          },
-          {
-            'name': 'wedSarah',
-            'location': 'mixed',
-            'notes': 'Foo baa'
-          }
+
         ],
         thursday: [
-          {
-            'name': 'thurAlex',
-            'location': 'home',
-            'notes': 'Foo baa'
-          },
-          {
-            'name': 'thurJoe',
-            'location': 'office',
-            'notes': 'Foo baa'
-          },
-          {
-            'name': 'thurAnna',
-            'location': 'home',
-            'notes': 'Foo baa'
-          },
-          {
-            'name': 'thurJamie',
-            'location': 'office',
-            'notes': 'Foo baa'
-          },
-          {
-            'name': 'thurSarah',
-            'location': 'mixed',
-            'notes': 'Foo baa'
-          }
+       
         ],
         friday: [
-          {
-            'name': 'friAlex',
-            'location': 'home',
-            'notes': 'Foo baa'
-          },
-          {
-            'name': 'friJoe',
-            'location': 'office',
-            'notes': 'Foo baa'
-          },
-          {
-            'name': 'friAnna',
-            'location': 'home',
-            'notes': 'Foo baa'
-          },
-          {
-            'name': 'friJamie',
-            'location': 'office',
-            'notes': 'Foo baa'
-          },
-          {
-            'name': 'friSarah',
-            'location': 'mixed',
-            'notes': 'Foo baa'
-          }
+        
         ]
       },
       entry: {
@@ -187,17 +67,20 @@ export default {
         notes:""
       },
       addToNextFreeCell: function(entry, day) {
+        // make copy to avoid referece to current entry obj
+        //let entryRecord = Object.assign({}, entry);
+        var entryRecord = JSON.parse(JSON.stringify(entry));
         for (var i = 0; i < day.length; i ++) {
           if (day[i].empty) {
             console.log('i is: ' + i);
-            this.$set(day, i, entry);
+            this.$set(day, i, entryRecord);
             console.log('adding entry to ');
             console.log(day);
             return true;
           }
         }
         console.log('no free cel, create new row')
-        day.push(entry); // no free cell, create new row;
+        day.push(entryRecord); // no free cell, create new row;
       },
       submitEntry: function() {
 

@@ -32,7 +32,7 @@
     
     <button class="Accordion" role="tab" aria-selected="false">Friday</button>
     <div style="order:0;" class="Rtable-cell Rtable-cell--head day"><h3>Friday</h3></div>
-     <div v-for="(person, index) in entries.thursday" v-bind:style="{ order: index + 1  }" class="Rtable-cell">
+     <div v-for="(person, index) in entries.friday" v-bind:style="{ order: index + 1  }" class="Rtable-cell">
    {{ person.name }}
       
     </div>
