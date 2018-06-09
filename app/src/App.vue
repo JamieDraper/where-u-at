@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <WeeklyTable :entries="entries"/>
+    <WeeklyTable :entries="entries" test="foo"/>
 
     <form v-on:submit.prevent="submitEntry()">
       
@@ -186,9 +186,26 @@ export default {
         location: "",
         notes:""
       },
+      addToNextFreeCell: function(entry, day) {
+        for (var i = 0; i < day.length; i ++) {
+          if (day[i].empty) {
+            console.log('i is: ' + i);
+            this.$set(day, i, entry);
+            console.log('adding entry to ');
+            console.log(day);
+            return true;
+          }
+        }
+        console.log('no free cel, create new row')
+        day.push(entry); // no free cell, create new row;
+      },
       submitEntry: function() {
-        console.log('inside submitEntry');
-        console.log(this.entry);
+
+        // validate :/
+
+        // adding to fri doesn't work at all
+        // adding to thurs adds to both thurs and fri
+        this.addToNextFreeCell(this.entry, this.entries[this.entry.day]);
 
       }
     }

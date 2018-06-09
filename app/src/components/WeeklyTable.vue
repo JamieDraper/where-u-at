@@ -47,7 +47,7 @@ export default {
     entries: Object
   },
   created: function() {
-    console.log(this.entries);
+    
   },
   data: function(){
     return {
@@ -55,6 +55,34 @@ export default {
         'order': 0
       }
     }
+  },
+  watch: { 
+    entries: {
+      handler: function(newVal, oldVal) { 
+        //console.log('WATCHER FOR ENTRIES FIRED');
+        // calculate the most entries on a sengle day
+        var mostEntriesPerDay = 0;
+        for (var day in this.entries) {
+          if ( this.entries.hasOwnProperty(day) && this.entries[day].length > mostEntriesPerDay ) {
+            mostEntriesPerDay = this.entries[day].length;
+          }
+        }
+        console.log('mostEntriesPerDay: ' + mostEntriesPerDay);
+        // add empty entries until they all match in entry length
+        for (var day in this.entries) {
+          if ( this.entries.hasOwnProperty(day) && this.entries[day].length <  mostEntriesPerDay ) {
+            // add blank entry
+            var numberOfBlankEntries = mostEntriesPerDay - this.entries[day].length;
+            for (var i = 0; i < numberOfBlankEntries; i++) {
+              this.entries[day].push({'empty': true});
+            }
+          }
+        }
+
+      },
+      deep: true
+    }
+    
   }
 }
 </script>
