@@ -3,35 +3,35 @@
   
     <button class="Accordion" role="tab" aria-selected="true">Monday</button>
     <div style="order:0;" class="Rtable-cell Rtable-cell--head day"><h3>Monday</h3></div>
-    <div v-for="(person, index) in entries.monday" v-bind:style="{ order: index + 1 }" class="Rtable-cell">
-    <EntryCell :name="person.name" :location="person.location"/>
+    <div v-for="(entry, index) in entries.monday" v-bind:style="{ order: index + 1 }" class="Rtable-cell">
+    <EntryCell :name="entry.name" :location="entry.location" :notes="entry.notes"/>
     </div>
 
 
     
     <button class="Accordion" role="tab" aria-selected="true">Tuesday</button>
     <div style="order:0;" class="Rtable-cell Rtable-cell--head day"><h3>Tuesday</h3></div>
-    <div v-for="(person, index) in entries.tuesday" v-bind:style="{ order: index + 1  }" class="Rtable-cell">
-    <EntryCell :name="person.name" :location="person.location"/>
+    <div v-for="(entry, index) in entries.tuesday" v-bind:style="{ order: index + 1  }" class="Rtable-cell">
+    <EntryCell :name="entry.name" :location="entry.location" :notes="entry.notes"/>
     </div>
 
     
     <button class="Accordion" role="tab" aria-selected="false">Wednesday</button>
     <div style="order:0;" class="Rtable-cell Rtable-cell--head day"><h3>Wednesday</h3></div>
-    <div v-for="(person, index) in entries.wednesday" v-bind:style="{ order: index + 1  }" class="Rtable-cell">
-    <EntryCell :name="person.name" :location="person.location"/>
+    <div v-for="(entry, index) in entries.wednesday" v-bind:style="{ order: index + 1  }" class="Rtable-cell">
+    <EntryCell :name="entry.name" :location="entry.location" :notes="entry.notes"/>
     </div>
     
     <button class="Accordion" role="tab" aria-selected="false">Thursday</button>
     <div style="order:0;" class="Rtable-cell Rtable-cell--head day"><h3>Thursday</h3></div>
-    <div v-for="(person, index) in entries.thursday" v-bind:style="{ order: index + 1  }" class="Rtable-cell">
-    <EntryCell :name="person.name" :location="person.location"/>  
+    <div v-for="(entry, index) in entries.thursday" v-bind:style="{ order: index + 1  }" class="Rtable-cell">
+    <EntryCell :name="entry.name" :location="entry.location" :notes="entry.notes"/>
     </div>
     
     <button class="Accordion" role="tab" aria-selected="false">Friday</button>
     <div style="order:0;" class="Rtable-cell Rtable-cell--head day"><h3>Friday</h3></div>
-    <div v-for="(person, index) in entries.friday" v-bind:style="{ order: index + 1  }" class="Rtable-cell">
-    <EntryCell :name="person.name" :location="person.location"/> 
+    <div v-for="(entry, index) in entries.friday" v-bind:style="{ order: index + 1  }" class="Rtable-cell">
+    <EntryCell :name="entry.name" :location="entry.location" :notes="entry.notes"/>
     </div>
 
   </div>
@@ -105,8 +105,9 @@ export default {
 .Rtable {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 0 3em 0;
+  margin: 0 auto 3em auto;
   padding: 0;
+  max-width: 1150px;
 }
 .Rtable-cell {
   box-sizing: border-box;

@@ -5,6 +5,7 @@
 
     <img class="entry-icon" v-bind:src="cardIconUrl" />
   
+    <button v-if="this.notes" class="notes-btn"></button>
   
   </div>
 </template>
@@ -15,7 +16,8 @@ export default {
   name: 'EntryCell',
   props: {
     name: String,
-    location: String
+    location: String,
+    notes: String,
   },
   computed: {
 
@@ -36,8 +38,9 @@ export default {
   border-radius: 10px;
   min-height: 95px;
   position: relative;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  transition: all 0.25s cubic-bezier(.25,.8,.25,1);
+  
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.22);
+  transition: all 0.34s cubic-bezier(.25,.8,.25,1);
   cursor: pointer;
 }
 
@@ -73,6 +76,45 @@ export default {
   position: absolute;
   top: 10px;
   font-size: 30px;
+  cursor: pointer;
+}
+.notes-btn {
+  background: url('/images/note.png');
+  height: 30px;
+  width: 30px;
+  background-size: contain;
+  border: 0;
+  background-repeat: no-repeat;
+  padding: 0;
+  position: absolute;
+  bottom: 11px;
+  left: 9px;
+  cursor: pointer;
+}
+
+.entry:hover .notes-btn {
+  animation: shake 1.12s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-0.5px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(1px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-2px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(2px, 0, 0);
+  }
 }
 
 </style>

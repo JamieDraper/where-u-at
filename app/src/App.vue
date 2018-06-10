@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    
     <img class="logo" src="/images/logo.png" />
     <WeeklyTable :entries="entries" test="foo"/>
 
@@ -44,6 +45,14 @@ export default {
   name: 'app',
   components: {
     WeeklyTable
+  },
+  methods: {
+    showModal() {
+      this.isModalVisible = true;
+    },
+    closeModal() {
+      this.isModalVisible = false;
+    }
   },
   data: function() {
     return {
@@ -146,7 +155,7 @@ label {
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
   cursor: pointer;
 }
-.add-entry-btn:focus {
+button:focus {
   outline: none;
 }
 </style>
