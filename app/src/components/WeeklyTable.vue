@@ -4,7 +4,7 @@
     <button class="Accordion" role="tab" aria-selected="true">Monday</button>
     <div style="order:0;" class="Rtable-cell Rtable-cell--head day"><h3>Monday</h3></div>
     <div v-for="(person, index) in entries.monday" v-bind:style="{ order: index + 1 }" class="Rtable-cell">
-    <EntryCell :name="person.name"/>
+    <EntryCell :name="person.name" :location="person.location"/>
     </div>
 
 
@@ -12,26 +12,26 @@
     <button class="Accordion" role="tab" aria-selected="true">Tuesday</button>
     <div style="order:0;" class="Rtable-cell Rtable-cell--head day"><h3>Tuesday</h3></div>
     <div v-for="(person, index) in entries.tuesday" v-bind:style="{ order: index + 1  }" class="Rtable-cell">
-    <EntryCell :name="person.name" />
+    <EntryCell :name="person.name" :location="person.location"/>
     </div>
 
     
     <button class="Accordion" role="tab" aria-selected="false">Wednesday</button>
     <div style="order:0;" class="Rtable-cell Rtable-cell--head day"><h3>Wednesday</h3></div>
     <div v-for="(person, index) in entries.wednesday" v-bind:style="{ order: index + 1  }" class="Rtable-cell">
-    <EntryCell :name="person.name" />
+    <EntryCell :name="person.name" :location="person.location"/>
     </div>
     
     <button class="Accordion" role="tab" aria-selected="false">Thursday</button>
     <div style="order:0;" class="Rtable-cell Rtable-cell--head day"><h3>Thursday</h3></div>
     <div v-for="(person, index) in entries.thursday" v-bind:style="{ order: index + 1  }" class="Rtable-cell">
-    <EntryCell :name="person.name" />   
+    <EntryCell :name="person.name" :location="person.location"/>  
     </div>
     
     <button class="Accordion" role="tab" aria-selected="false">Friday</button>
     <div style="order:0;" class="Rtable-cell Rtable-cell--head day"><h3>Friday</h3></div>
     <div v-for="(person, index) in entries.friday" v-bind:style="{ order: index + 1  }" class="Rtable-cell">
-    <EntryCell :name="person.name" />  
+    <EntryCell :name="person.name" :location="person.location"/> 
     </div>
 
   </div>
@@ -95,7 +95,13 @@ export default {
  li {
   display: block;
  }
-
+.day h3 {
+    font-family: "Hind Madurai", sans-serif;
+    color: #666;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 300;
+}
 .Rtable {
   display: flex;
   flex-wrap: wrap;
@@ -111,6 +117,8 @@ export default {
   list-style: none;
   border: solid 3px white;
   background: rgba(112, 128, 144, 0.2);
+  padding: 8px;
+  border-radius: 10px;
 }
 .Rtable-cell > h1,
 .Rtable-cell > h2,

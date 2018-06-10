@@ -2,6 +2,13 @@
 
 Simple shedule tool for seeing where staff members are working from each day of the week.
 
-## Getting Started
+## TODO
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Frontend
+- Move form into modal and style it
+  - madelogos. vbind on image src isn't working
+  
+- Make a entry cell component
+	- Add the rest of props
+- Add form validation
+- Prevent duplicates for same day

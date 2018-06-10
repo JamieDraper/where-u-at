@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img src="./assets/home-icon.png" />
+    <img class="logo" src="/images/logo.png" />
     <WeeklyTable :entries="entries" test="foo"/>
 
     <form v-on:submit.prevent="submitEntry()">
@@ -30,6 +30,8 @@
 
       <button type="submit">Submit</button>
 
+      <button class="add-entry-btn">+</button>
+
     </form>
 
   </div>
@@ -47,7 +49,7 @@ export default {
     return {
       entries: {
         monday: [
-
+     
         ],
         tuesday: [
 
@@ -101,15 +103,50 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=Hind+Madurai:300,500,600,700%7CSource+Serif+Pro:400,600,700');
+body {
+  margin: 0;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  padding: 0 8px; 
+  min-height: 100vh;
+  position: relative;
+}
+.logo {
+  border-bottom: 3px solid #EB5F52;
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+  max-width: 200px;
   margin-top: 60px;
 }
 label {
   display: block;
+}
+.add-entry-btn {
+  font-family: "Hind Madurai", sans-serif;
+  color: #666;
+  font-size: 111px;
+  padding: 0;
+  background: #EB5F52;
+  color: white;
+  height: 73.8px;
+  line-height: 0.44;
+  padding: 19px 5.71px;
+  display: block;
+  border-radius: 50%;
+  font-weight: 300;
+  position: fixed;
+  right: 35px;
+  bottom: 35px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  cursor: pointer;
+}
+.add-entry-btn:focus {
+  outline: none;
 }
 </style>
