@@ -4,45 +4,48 @@
     <button class="Accordion" role="tab" aria-selected="true">Monday</button>
     <div style="order:0;" class="Rtable-cell Rtable-cell--head day"><h3>Monday</h3></div>
     <div v-for="(person, index) in entries.monday" v-bind:style="{ order: index + 1 }" class="Rtable-cell">
-    {{ person.name }}
+    <EntryCell :name="person.name"/>
     </div>
+
 
     
     <button class="Accordion" role="tab" aria-selected="true">Tuesday</button>
     <div style="order:0;" class="Rtable-cell Rtable-cell--head day"><h3>Tuesday</h3></div>
-     <div v-for="(person, index) in entries.tuesday" v-bind:style="{ order: index + 1  }" class="Rtable-cell">
-   {{ person.name }}
-      
+    <div v-for="(person, index) in entries.tuesday" v-bind:style="{ order: index + 1  }" class="Rtable-cell">
+    <EntryCell :name="person.name" />
     </div>
 
     
     <button class="Accordion" role="tab" aria-selected="false">Wednesday</button>
     <div style="order:0;" class="Rtable-cell Rtable-cell--head day"><h3>Wednesday</h3></div>
-   <div v-for="(person, index) in entries.wednesday" v-bind:style="{ order: index + 1  }" class="Rtable-cell">
-   {{ person.name }}
-      
+    <div v-for="(person, index) in entries.wednesday" v-bind:style="{ order: index + 1  }" class="Rtable-cell">
+    <EntryCell :name="person.name" />
     </div>
     
     <button class="Accordion" role="tab" aria-selected="false">Thursday</button>
-      <div style="order:0;" class="Rtable-cell Rtable-cell--head day"><h3>Thursday</h3></div>
-   <div v-for="(person, index) in entries.thursday" v-bind:style="{ order: index + 1  }" class="Rtable-cell">
-   {{ person.name }}
-      
+    <div style="order:0;" class="Rtable-cell Rtable-cell--head day"><h3>Thursday</h3></div>
+    <div v-for="(person, index) in entries.thursday" v-bind:style="{ order: index + 1  }" class="Rtable-cell">
+    <EntryCell :name="person.name" />   
     </div>
     
     <button class="Accordion" role="tab" aria-selected="false">Friday</button>
     <div style="order:0;" class="Rtable-cell Rtable-cell--head day"><h3>Friday</h3></div>
-     <div v-for="(person, index) in entries.friday" v-bind:style="{ order: index + 1  }" class="Rtable-cell">
-   {{ person.name }}
-      
+    <div v-for="(person, index) in entries.friday" v-bind:style="{ order: index + 1  }" class="Rtable-cell">
+    <EntryCell :name="person.name" />  
     </div>
 
   </div>
 </template>
 
 <script>
+
+import EntryCell from './EntryCell.vue'
+
 export default {
   name: 'WeeklyTable',
+  components: {
+    EntryCell
+  },
   props: {
     entries: Object
   },

@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <img src="./assets/home-icon.png" />
     <WeeklyTable :entries="entries" test="foo"/>
 
     <form v-on:submit.prevent="submitEntry()">
