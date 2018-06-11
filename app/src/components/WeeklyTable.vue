@@ -74,7 +74,6 @@ export default {
         // add empty entries until they all match in entry length
         for (var day in this.entries) {
           if ( this.entries.hasOwnProperty(day) && this.entries[day].length <  mostEntriesPerDay ) {
-            // add blank entry
             var numberOfBlankEntries = mostEntriesPerDay - this.entries[day].length;
             for (var i = 0; i < numberOfBlankEntries; i++) {
               this.entries[day].push({'empty': true});

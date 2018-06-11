@@ -31,11 +31,14 @@
 
       <button type="submit">Submit</button>
 
-      <button class="add-entry-btn">+</button>
+      <button class="add-entry-btn" v-on:click="show">+</button>
 
     </form>
-
+    <modal name="hello-world">
+      hello, world!
+    </modal>
   </div>
+
 </template>
 
 <script>
@@ -47,11 +50,11 @@ export default {
     WeeklyTable
   },
   methods: {
-    showModal() {
-      this.isModalVisible = true;
+    show () {
+      this.$modal.show('hello-world');
     },
-    closeModal() {
-      this.isModalVisible = false;
+    hide () {
+      this.$modal.hide('hello-world');
     }
   },
   data: function() {
@@ -80,33 +83,34 @@ export default {
       },
       addToNextFreeCell: function(entry, day) {
         // make copy to avoid referece to current entry obj
-        //let entryRecord = Object.assign({}, entry);
         var entryRecord = JSON.parse(JSON.stringify(entry));
         for (var i = 0; i < day.length; i ++) {
           if (day[i].empty) {
-            console.log('i is: ' + i);
             this.$set(day, i, entryRecord);
-            console.log('adding entry to ');
-            console.log(day);
             return true;
           }
         }
-        console.log('no free cel, create new row')
         day.push(entryRecord); // no free cell, create new row;
       },
+      isDuplicateEntry: function(entry) {
+        var entriesForDay = this.entries[this.entry.day];
+        for (var i = 0; i < entriesForDay.length; i ++) {
+          if ( entriesForDay[i].name.toLowerCase() === entry.name.toLowerCase() ) { return true;}
+        }
+        return false;
+      },
       submitEntry: function() {
-
         // validate :/
-
-        // adding to fri doesn't work at all
-        // adding to thurs adds to both thurs and fri
-        this.addToNextFreeCell(this.entry, this.entries[this.entry.day]);
-
+        // if not duplicate
+        if (!this.isDuplicateEntry(this.entry) ) {
+          this.addToNextFreeCell(this.entry, this.entries[this.entry.day]);
+        } else {
+          console.log('duplicate ya ding dong');
+          // editExistingEntry()
+        }
+        // else update pre-existingentry
       }
     }
-  },
-  created: function() {
-
   }
 }
 </script>
